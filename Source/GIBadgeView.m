@@ -119,9 +119,17 @@ static NSTimeInterval const kBadgeAnimationDuration = 0.2;
 }
 
 - (void)setBadgeValue:(NSInteger)badgeValue {
-    // Ensure our badge value remains positive.
+    // No-op if we're given zero or less and our current badge value is zero,
+    // meaning we're hidden anyway.
     //
-    if (badgeValue < 0) {
+    if (badgeValue <= 0 && self.badgeValue == 0) {
+        return;
+    }
+
+    // If we're given a negative number and our badge value is a positive number,
+    // treat this like we're setting it to zero.
+    //
+    if (badgeValue < 0 && self.badgeValue > 0) {
         badgeValue = 0;
     }
 
