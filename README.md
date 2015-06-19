@@ -5,7 +5,6 @@
 
 
 ![demo](Screenshots/demo.gif)
----
 
 ## Getting started
 
@@ -40,8 +39,7 @@ badge.textColor = [UIColor whiteColor];
 badge.backgroundColor = [UIColor colorWithRed:49/255.0 green:69/255.0 blue:122/255.0 alpha:1.0];
 ```
 
-![demo](Screenshots/demo2.gif)
----
+![demo](Screenshots/demo1.gif)
 
 ## License
 
