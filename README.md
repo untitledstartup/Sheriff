@@ -2,6 +2,7 @@
 ## Sheriff - by [Gemr](http://www.gemr.com?utm_source=github&utm_medium=open_source&utm_campaign=sheriff)
 
 ### Badgify anything.
+[![Build Status](https://travis-ci.org/gemr/Sheriff.svg)](https://travis-ci.org/gemr/Sheriff)
 
 
 ![demo](Screenshots/demo.gif)
