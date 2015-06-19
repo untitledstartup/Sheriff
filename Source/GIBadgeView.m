@@ -17,6 +17,7 @@ static NSTimeInterval const kBadgeAnimationDuration = 0.1;
 @interface GIBadgeView ()
 
 @property (nonatomic, strong) UILabel *valueLabel;
+@property (nonatomic, strong) NSNumberFormatter *formatter;
 
 @end
 
@@ -28,6 +29,10 @@ static NSTimeInterval const kBadgeAnimationDuration = 0.1;
     if (!self) {
         return nil;
     }
+
+    self.formatter = [NSNumberFormatter new];
+    self.formatter.groupingSeparator = @",";
+    self.formatter.usesGroupingSeparator = YES;
 
     [self setupDefaultAppearance];
 
@@ -122,7 +127,7 @@ static NSTimeInterval const kBadgeAnimationDuration = 0.1;
 
     _badgeValue = badgeValue;
 
-    self.valueLabel.text = [NSString stringWithFormat:@"%ld", (long)badgeValue];
+    self.valueLabel.text = [self.formatter stringFromNumber:@(badgeValue)];
 
     [self layoutBadgeSubviews];
     [self updateStateIfNeeded];
