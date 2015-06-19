@@ -10,9 +10,9 @@
 
 static CGFloat const kBadgeViewMinimumSize = 25.0;
 static CGFloat const kBadgeViewPadding = 12.0;
-static CGFloat const kBadgeViewDefaultFontSize = 25.0;
+static CGFloat const kBadgeViewDefaultFontSize = 18.0;
 
-static NSTimeInterval const kBadgeAnimationDuration = 0.1;
+static NSTimeInterval const kBadgeAnimationDuration = 0.2;
 
 @interface GIBadgeView ()
 
