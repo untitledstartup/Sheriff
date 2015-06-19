@@ -5,6 +5,7 @@
 
 
 ![demo](Screenshots/demo.gif)
+---
 
 ## Getting started
 
@@ -29,10 +30,18 @@ Animations to display and dismiss the badge are handled automatically. Setting t
 
 Easy, huh?
 
----
-[<img src="Screenshots/gemr_logo.png">](https://gemr.com/?utm_source=github&utm_medium=open_source&utm_campaign=sheriff)
+## Can I customize it?
 
-###Gemr is a social community for collectors where you can discover, share, buy, sell, trade, and show-off your collectibles and other unique items. We want to connect you with like-minded people who share your passions.
+You sure can...
+
+```objective-c
+badge.font = [UIFont fontWithName:@"OpenSans-Semibold" size:18];
+badge.textColor = [UIColor whiteColor];
+badge.backgroundColor = [UIColor colorWithRed:49/255.0 green:69/255.0 blue:122/255.0 alpha:1.0];
+```
+
+![demo](Screenshots/demo2.gif)
+---
 
 ## License
 
