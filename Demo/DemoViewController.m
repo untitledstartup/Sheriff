@@ -20,19 +20,20 @@
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"-" style:UIBarButtonItemStylePlain target:self action:@selector(decrement)];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"+" style:UIBarButtonItemStylePlain target:self action:@selector(increment)];
 
-    self.logoImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@""]];
+    self.logoImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"gemr"]];
     self.logoImageView.clipsToBounds = NO;
-    self.logoImageView.backgroundColor = [UIColor lightGrayColor];
     [self.view addSubview:self.logoImageView];
 
     self.badgeView = [GIBadgeView new];
+    self.badgeView.font = [UIFont fontWithName:@"OpenSans-Semibold" size:18];
+    self.badgeView.backgroundColor = [UIColor colorWithRed:49/255.0 green:69/255.0 blue:122/255.0 alpha:1.0];
     [self.logoImageView addSubview:self.badgeView];
 }
 
 - (void)viewWillLayoutSubviews {
     [super viewWillLayoutSubviews];
 
-    self.logoImageView.frame = CGRectMake(0, 0, 200, 200);
+    self.logoImageView.frame = CGRectMake(0, 0, 322, 100);
     self.logoImageView.center = self.view.center;
 }
 
@@ -62,12 +63,20 @@
 }
 
 - (void)decrement {
-    if (self.badgeView.badgeValue == 100) {
-        [self.badgeView setBadgeValue:20];
+    if (self.badgeView.badgeValue == 10000) {
+        [self.badgeView setBadgeValue:1005];
     }
 
-    else if (self.badgeView.badgeValue == 15) {
-        [self.badgeView setBadgeValue:9];
+    if (self.badgeView.badgeValue == 1000) {
+        [self.badgeView setBadgeValue:105];
+    }
+
+    else if (self.badgeView.badgeValue == 100) {
+        [self.badgeView setBadgeValue:99];
+    }
+
+    else if (self.badgeView.badgeValue == 95) {
+        [self.badgeView setBadgeValue:5];
     }
 
     else {
