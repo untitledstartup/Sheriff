@@ -8,8 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import <XCTest/XCTest.h>
+#import "GIBadgeView.h"
 
-@interface SheriffTests : XCTestCase
+@interface SheriffTests : XCTestCase {
+    GIBadgeView *_badgeView;
+}
 
 @end
 
@@ -17,24 +20,51 @@
 
 - (void)setUp {
     [super setUp];
-    // Put setup code here. This method is called before the invocation of each test method in the class.
+
+    _badgeView = [GIBadgeView new];
 }
 
 - (void)tearDown {
-    // Put teardown code here. This method is called after the invocation of each test method in the class.
+    _badgeView = nil;
+
     [super tearDown];
+
 }
 
-- (void)testExample {
-    // This is an example of a functional test case.
-    XCTAssert(YES, @"Pass");
+- (void)testSetBadgeValue {
+    _badgeView.badgeValue = 5;
+    XCTAssertEqual(_badgeView.badgeValue, 5);
+
+    _badgeView.badgeValue = 22;
+    XCTAssertEqual(_badgeView.badgeValue, 22);
+
+    _badgeView.badgeValue = -12;
+    XCTAssertEqual(_badgeView.badgeValue, 0);
+
+    [_badgeView setBadgeValue:1011];
+    XCTAssertEqual(_badgeView.badgeValue, 1011);
 }
 
-- (void)testPerformanceExample {
-    // This is an example of a performance test case.
-    [self measureBlock:^{
-        // Put the code you want to measure the time of here.
-    }];
+- (void)testIncrement {
+    for (NSInteger i = 0; i < 100; i++) {
+        XCTAssertEqual(_badgeView.badgeValue, i);
+
+        [_badgeView increment];
+    }
+}
+
+- (void)testDecrement {
+    NSInteger startingValue = 95;
+
+    _badgeView.badgeValue = startingValue;
+
+    for (NSInteger i = startingValue; i > -10; --i) {
+        NSInteger expectedValue = (i < 0) ? 0 : i;
+
+        XCTAssertEqual(_badgeView.badgeValue, expectedValue);
+
+        [_badgeView decrement];
+    }
 }
 
 @end
