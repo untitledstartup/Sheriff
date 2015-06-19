@@ -10,6 +10,9 @@
 
 static CGFloat const kBadgeViewMinimumSize = 25.0;
 static CGFloat const kBadgeViewPadding = 12.0;
+static CGFloat const kBadgeViewDefaultFontSize = 25.0;
+
+static NSTimeInterval const kBadgeAnimationDuration = 0.1;
 
 @interface GIBadgeView ()
 
@@ -50,7 +53,7 @@ static CGFloat const kBadgeViewPadding = 12.0;
     [self addSubview:self.valueLabel];
 
     self.textColor = [UIColor whiteColor];
-    self.font = [UIFont boldSystemFontOfSize:25];
+    self.font = [UIFont boldSystemFontOfSize:kBadgeViewDefaultFontSize];
 }
 
 - (void)setTextColor:(UIColor *)textColor {
@@ -145,13 +148,13 @@ static CGFloat const kBadgeViewPadding = 12.0;
 - (void)show {
     self.hidden = NO;
 
-    [UIView animateWithDuration:0.1 animations:^{
+    [UIView animateWithDuration:kBadgeAnimationDuration animations:^{
         self.transform = CGAffineTransformIdentity;
     }];
 }
 
 - (void)hide {
-    [UIView animateWithDuration:0.1 animations:^{
+    [UIView animateWithDuration:kBadgeAnimationDuration animations:^{
         self.transform = CGAffineTransformMakeScale(0.01, 0.01);
     } completion:^(BOOL finished) {
         self.hidden = YES;
