@@ -47,7 +47,7 @@ static NSTimeInterval const kBadgeAnimationDuration = 0.2;
     //
     self.clipsToBounds = YES;
     self.hidden = YES;
-    self.transform = CGAffineTransformMakeScale(0.01, 0.01);
+    self.transform = CGAffineTransformMakeScale(0.001, 0.001);
     self.backgroundColor = [UIColor redColor];
 
     // Defaults for the label.
@@ -160,7 +160,7 @@ static NSTimeInterval const kBadgeAnimationDuration = 0.2;
 
 - (void)hide {
     [UIView animateWithDuration:kBadgeAnimationDuration animations:^{
-        self.transform = CGAffineTransformMakeScale(0.01, 0.01);
+        self.transform = CGAffineTransformMakeScale(0.001, 0.001);
     } completion:^(BOOL finished) {
         self.hidden = YES;
     }];

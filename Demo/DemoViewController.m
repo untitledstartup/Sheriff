@@ -33,7 +33,7 @@
 - (void)viewWillLayoutSubviews {
     [super viewWillLayoutSubviews];
 
-    self.logoImageView.frame = CGRectMake(0, 0, 322, 100);
+    self.logoImageView.frame = CGRectMake(0, 0, 290, 90);
     self.logoImageView.center = self.view.center;
 }
 
