@@ -2,5 +2,5 @@ language: objective-c
 before_install: gem install cocoapods xcpretty obcd slather -N
 xcode_sdk: iphonesimulator
 xcode_project: Sheriff.xcodeproj
-xcode_scheme: SheriffTests
+xcode_scheme: Sheriff
 after_success: slather
