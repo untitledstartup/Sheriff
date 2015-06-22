@@ -3,7 +3,7 @@
 
 ### Badgify anything.
 [![Build Status](https://travis-ci.org/gemr/Sheriff.svg)](https://travis-ci.org/gemr/Sheriff)
-[![License](https://img.shields.io/cocoapods/l/Sheriff.svg)](http://doge.mit-license.org) [![Badge w/ Version](https://img.shields.io/cocoapods/v/Sheriff.svg)](https://img.shields.io/cocoapods/v/Sheriff.svg) [![Coverage Status](https://coveralls.io/repos/gemr/Sheriff/badge.svg?branch=master)](https://coveralls.io/r/mamaral/Sheriff?branch=master)
+[![License](https://img.shields.io/cocoapods/l/Sheriff.svg)](http://doge.mit-license.org) [![Badge w/ Version](https://img.shields.io/cocoapods/v/Sheriff.svg)](https://img.shields.io/cocoapods/v/Sheriff.svg) [![Coverage Status](https://coveralls.io/repos/gemr/Sheriff/badge.svg?branch=master)](https://coveralls.io/r/gemr/Sheriff?branch=master)
 
 
 ![demo](Screenshots/demo.gif)
