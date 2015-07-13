@@ -10,6 +10,8 @@
 #import <XCTest/XCTest.h>
 #import "GIBadgeView.h"
 
+static NSTimeInterval const kAnimationTestDelay = 0.3;
+
 @interface SheriffTests : XCTestCase {
     GIBadgeView *_badgeView;
 }
@@ -29,6 +31,24 @@
 
     [super tearDown];
 
+}
+
+- (void)testInit {
+    GIBadgeView *badgeView = [GIBadgeView new];
+
+    XCTAssertNotNil(badgeView);
+    XCTAssertEqual(badgeView.badgeValue, 0);
+    XCTAssertNotNil(badgeView.font);
+    XCTAssertNotNil(badgeView.textColor);
+}
+
+- (void)testInitWithCoder {
+    GIBadgeView *badgeView = [[GIBadgeView alloc] initWithCoder:nil];
+
+    XCTAssertNotNil(badgeView);
+    XCTAssertEqual(badgeView.badgeValue, 0);
+    XCTAssertNotNil(badgeView.font);
+    XCTAssertNotNil(badgeView.textColor);
 }
 
 - (void)testSetBadgeValue {
@@ -65,6 +85,26 @@
 
         [_badgeView decrement];
     }
+}
+
+- (void)testVisibility {
+    XCTAssertTrue(_badgeView.hidden);
+
+    XCTestExpectation *expectation = [self expectationWithDescription:nil];
+
+    [_badgeView increment];
+
+    XCTAssertFalse(_badgeView.hidden);
+
+    [_badgeView decrement];
+
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, kAnimationTestDelay * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
+        XCTAssertTrue(_badgeView.hidden);
+
+        [expectation fulfill];
+    });
+
+    [self waitForExpectationsWithTimeout:2.0 handler:nil];
 }
 
 @end

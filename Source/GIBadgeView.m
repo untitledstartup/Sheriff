@@ -23,20 +23,28 @@ static NSTimeInterval const kBadgeAnimationDuration = 0.2;
 
 @implementation GIBadgeView
 
-- (instancetype)init {
-    self = [super init];
-
-    if (!self) {
-        return nil;
+- (instancetype)initWithCoder:(NSCoder *)aDecoder {
+    if (self = [super initWithCoder:aDecoder]) {
+        [self commonInit];
     }
 
+    return self;
+}
+
+- (instancetype)init {
+    if (self = [super init]) {
+        [self commonInit];
+    }
+
+    return self;
+}
+
+- (void)commonInit {
     self.formatter = [NSNumberFormatter new];
     self.formatter.groupingSeparator = @",";
     self.formatter.usesGroupingSeparator = YES;
 
     [self setupDefaultAppearance];
-
-    return self;
 }
 
 
