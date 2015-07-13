@@ -31,6 +31,24 @@
 
 }
 
+- (void)testInit {
+    GIBadgeView *badgeView = [GIBadgeView new];
+
+    XCTAssertNotNil(badgeView);
+    XCTAssertEqual(badgeView.badgeValue, 0);
+    XCTAssertNotNil(badgeView.font);
+    XCTAssertNotNil(badgeView.textColor);
+}
+
+- (void)testInitWithCoder {
+    GIBadgeView *badgeView = [[GIBadgeView alloc] initWithCoder:nil];
+
+    XCTAssertNotNil(badgeView);
+    XCTAssertEqual(badgeView.badgeValue, 0);
+    XCTAssertNotNil(badgeView.font);
+    XCTAssertNotNil(badgeView.textColor);
+}
+
 - (void)testSetBadgeValue {
     _badgeView.badgeValue = 5;
     XCTAssertEqual(_badgeView.badgeValue, 5);
