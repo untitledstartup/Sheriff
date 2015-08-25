@@ -8,8 +8,8 @@
 
 #import "GIBadgeView.h"
 
-static CGFloat const kBadgeViewMinimumSize = 25.0;
-static CGFloat const kBadgeViewPadding = 12.0;
+static CGFloat const kBadgeViewMinimumSize = 10.0;
+static CGFloat const kBadgeViewPadding = 5.0;
 static CGFloat const kBadgeViewDefaultFontSize = 18.0;
 
 static NSTimeInterval const kBadgeAnimationDuration = 0.2;
