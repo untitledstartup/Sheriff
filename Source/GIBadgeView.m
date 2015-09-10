@@ -100,10 +100,10 @@ static NSTimeInterval const kBadgeAnimationDuration = 0.2;
     CGFloat badgeLabelWidth = CGRectGetWidth(self.valueLabel.frame);
     CGFloat badgeLabelHeight = CGRectGetHeight(self.valueLabel.frame);
 
-    // Calculate the height we will be based on the label.
+    // Calculate the height and width we will be based on the label.
     //
     CGFloat height = MAX(kBadgeViewMinimumSize, badgeLabelHeight + kBadgeViewPadding);
-    CGFloat width = MAX(height, badgeLabelWidth + kBadgeViewPadding);
+    CGFloat width = MAX(height, badgeLabelWidth + (2 * kBadgeViewPadding));
 
     // Set our frame and corner radius based on those calculations.
     //
