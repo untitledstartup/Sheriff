@@ -43,7 +43,8 @@ static NSTimeInterval const kAnimationTestDelay = 0.3;
 }
 
 - (void)testInitWithCoder {
-    GIBadgeView *badgeView = [[GIBadgeView alloc] initWithCoder:nil];
+    NSCoder *nilCoder = nil;
+    GIBadgeView *badgeView = [[GIBadgeView alloc] initWithCoder:nilCoder];
 
     XCTAssertNotNil(badgeView);
     XCTAssertEqual(badgeView.badgeValue, 0);
@@ -90,7 +91,7 @@ static NSTimeInterval const kAnimationTestDelay = 0.3;
 - (void)testVisibility {
     XCTAssertTrue(_badgeView.hidden);
 
-    XCTestExpectation *expectation = [self expectationWithDescription:nil];
+    XCTestExpectation *expectation = [self expectationWithDescription:@"The expectation should be fulfilled after the delay."];
 
     [_badgeView increment];
 

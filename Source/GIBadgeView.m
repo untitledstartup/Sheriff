@@ -100,10 +100,10 @@ static NSTimeInterval const kBadgeAnimationDuration = 0.2;
     CGFloat badgeLabelWidth = CGRectGetWidth(self.valueLabel.frame);
     CGFloat badgeLabelHeight = CGRectGetHeight(self.valueLabel.frame);
 
-    // Calculate the height we will be based on the label.
+    // Calculate the height and width we will be based on the label.
     //
     CGFloat height = MAX(kBadgeViewMinimumSize, badgeLabelHeight + kBadgeViewPadding);
-    CGFloat width = MAX(height, badgeLabelWidth + kBadgeViewPadding);
+    CGFloat width = MAX(height, badgeLabelWidth + (2 * kBadgeViewPadding));
 
     // Set our frame and corner radius based on those calculations.
     //
@@ -141,21 +141,31 @@ static NSTimeInterval const kBadgeAnimationDuration = 0.2;
         badgeValue = 0;
     }
 
+    // Save the new badge value now that we've sanitized it.
+    //
     _badgeValue = badgeValue;
 
-    self.valueLabel.text = [self.formatter stringFromNumber:@(badgeValue)];
+    // If the badge value is larger than zero, let's update the label. The reason
+    // for this is that it looks weird when the label changes to 0 and then animates
+    // away. It makes more sense for it to simply disappear.
+    //
+    if (badgeValue > 0) {
+        self.valueLabel.text = [self.formatter stringFromNumber:@(badgeValue)];
+    }
 
-    [self layoutBadgeSubviews];
-    [self updateStateIfNeeded];
+    // Update our state.
+    //
+    [self updateState];
 }
 
 
-#pragma mark - Visibility
+#pragma mark - State
 
-- (void)updateStateIfNeeded {
+- (void)updateState {
     // If we're currently hidden and we should be visible, show ourself.
     //
     if (self.isHidden && self.badgeValue > 0) {
+        [self layoutBadgeSubviews];
         [self show];
     }
 
@@ -164,7 +174,16 @@ static NSTimeInterval const kBadgeAnimationDuration = 0.2;
     else if (!self.isHidden && self.badgeValue <= 0) {
         [self hide];
     }
+
+    // Otherwise update the subviews.
+    //
+    else {
+        [self layoutBadgeSubviews];
+    }
 }
+
+
+#pragma mark - Visibility
 
 - (void)show {
     self.hidden = NO;
