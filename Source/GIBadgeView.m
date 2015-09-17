@@ -12,8 +12,6 @@ static CGFloat const kBadgeViewMinimumSize = 20.0;
 static CGFloat const kBadgeViewPadding = 5.0;
 static CGFloat const kBadgeViewDefaultFontSize = 12.0;
 
-static NSTimeInterval const kBadgeAnimationDuration = 0.2;
-
 @interface GIBadgeView ()
 
 @property (nonatomic, strong) UILabel *valueLabel;
@@ -55,7 +53,6 @@ static NSTimeInterval const kBadgeAnimationDuration = 0.2;
     //
     self.clipsToBounds = YES;
     self.hidden = YES;
-    self.transform = CGAffineTransformMakeScale(0.001, 0.001);
     self.backgroundColor = [UIColor redColor];
 
     // Defaults for the label.
@@ -187,18 +184,10 @@ static NSTimeInterval const kBadgeAnimationDuration = 0.2;
 
 - (void)show {
     self.hidden = NO;
-
-    [UIView animateWithDuration:kBadgeAnimationDuration animations:^{
-        self.transform = CGAffineTransformIdentity;
-    }];
 }
 
 - (void)hide {
-    [UIView animateWithDuration:kBadgeAnimationDuration animations:^{
-        self.transform = CGAffineTransformMakeScale(0.001, 0.001);
-    } completion:^(BOOL finished) {
-        self.hidden = YES;
-    }];
+    self.hidden = YES;
 }
 
 @end
