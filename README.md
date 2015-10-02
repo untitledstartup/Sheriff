@@ -45,9 +45,9 @@ badge.backgroundColor = [UIColor colorWithRed:49/255.0 green:69/255.0 blue:122/2
 
 If you want to offset the badge because it's not placed quite right:
 
-```ruby
-badge.topOffset = 10   // Moves the badge down 10 points.
-badge.rightOffset = 10 // Moves the badge right 10 points.
+```objective-c
+badge.topOffset = 10;   // Moves the badge down 10 points.
+badge.rightOffset = 10; // Moves the badge right 10 points.
 ```
 
 ## License
