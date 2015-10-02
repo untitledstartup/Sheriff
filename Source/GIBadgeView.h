@@ -31,8 +31,8 @@
 /**
  * The padding of the badge from the upper right
  */
-@property (nonatomic, strong) NSNumber *topOffset;
-@property (nonatomic, strong) NSNumber *rightOffset;
+@property (nonatomic) CGFloat topOffset;
+@property (nonatomic) CGFloat rightOffset;
 
 /**
  * Increment the badge value, which will result in the badge being displayed if the current value is zero.

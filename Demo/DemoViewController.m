@@ -27,8 +27,8 @@
     self.badgeView = [GIBadgeView new];
 //    self.badgeView.font = [UIFont fontWithName:@"OpenSans-Semibold" size:18];
 //    self.badgeView.backgroundColor = [UIColor colorWithRed:49/255.0 green:69/255.0 blue:122/255.0 alpha:1.0];
-//    self.badgeView.topOffset = @20;
-//    self.badgeView.rightOffset = @20;
+    self.badgeView.topOffset = 20.0f;
+    self.badgeView.rightOffset = 20.0f;
     [self.logoImageView addSubview:self.badgeView];
 }
 
