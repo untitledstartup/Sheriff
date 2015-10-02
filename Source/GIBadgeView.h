@@ -28,6 +28,11 @@
  */
 @property (nonatomic, strong) UIFont *font;
 
+/**
+ * The padding of the badge from the upper right
+ */
+@property (nonatomic, strong) NSNumber *topOffset;
+@property (nonatomic, strong) NSNumber *rightOffset;
 
 /**
  * Increment the badge value, which will result in the badge being displayed if the current value is zero.

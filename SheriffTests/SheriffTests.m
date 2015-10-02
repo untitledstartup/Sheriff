@@ -40,6 +40,8 @@ static NSTimeInterval const kAnimationTestDelay = 0.3;
     XCTAssertEqual(badgeView.badgeValue, 0);
     XCTAssertNotNil(badgeView.font);
     XCTAssertNotNil(badgeView.textColor);
+    XCTAssertNotNil(badgeView.topOffset);
+    XCTAssertNotNil(badgeView.rightOffset);
 }
 
 - (void)testInitWithCoder {
@@ -50,6 +52,8 @@ static NSTimeInterval const kAnimationTestDelay = 0.3;
     XCTAssertEqual(badgeView.badgeValue, 0);
     XCTAssertNotNil(badgeView.font);
     XCTAssertNotNil(badgeView.textColor);
+    XCTAssertNotNil(badgeView.topOffset);
+    XCTAssertNotNil(badgeView.rightOffset);
 }
 
 - (void)testSetBadgeValue {
