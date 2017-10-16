@@ -12,8 +12,6 @@ static CGFloat const kBadgeViewMinimumSize = 10.0;
 static CGFloat const kBadgeViewPadding = 5.0;
 static CGFloat const kBadgeViewDefaultFontSize = 18.0;
 
-static NSTimeInterval const kBadgeAnimationDuration = 0.2;
-
 @interface GIBadgeView ()
 
 @property (nonatomic, strong) UILabel *valueLabel;
@@ -55,7 +53,6 @@ static NSTimeInterval const kBadgeAnimationDuration = 0.2;
     //
     self.clipsToBounds = YES;
     self.hidden = YES;
-    self.transform = CGAffineTransformMakeScale(0.001, 0.001);
     self.backgroundColor = [UIColor redColor];
 
     // Defaults for the label.
@@ -67,6 +64,12 @@ static NSTimeInterval const kBadgeAnimationDuration = 0.2;
 
     self.textColor = [UIColor whiteColor];
     self.font = [UIFont boldSystemFontOfSize:kBadgeViewDefaultFontSize];
+    
+    self.minimumSize = kBadgeViewMinimumSize;
+    
+    // Defaults for the corner offset
+    self.topOffset = 0.0f;
+    self.rightOffset = 0.0f;
 }
 
 - (void)setTextColor:(UIColor *)textColor {
@@ -102,12 +105,12 @@ static NSTimeInterval const kBadgeAnimationDuration = 0.2;
 
     // Calculate the height and width we will be based on the label.
     //
-    CGFloat height = MAX(kBadgeViewMinimumSize, badgeLabelHeight + kBadgeViewPadding);
+    CGFloat height = MAX(self.minimumSize, badgeLabelHeight + kBadgeViewPadding);
     CGFloat width = MAX(height, badgeLabelWidth + (2 * kBadgeViewPadding));
 
     // Set our frame and corner radius based on those calculations.
     //
-    self.frame = CGRectMake(CGRectGetWidth(self.superview.frame) - (width / 2.0), -(height / 2.0), width, height);
+    self.frame = CGRectMake(CGRectGetWidth(self.superview.frame) - (width / 2.0) - self.rightOffset, -(height / 2.0) + self.topOffset, width, height);
     self.layer.cornerRadius = height / 2.0;
 
     // Center the badge label.
@@ -187,18 +190,10 @@ static NSTimeInterval const kBadgeAnimationDuration = 0.2;
 
 - (void)show {
     self.hidden = NO;
-
-    [UIView animateWithDuration:kBadgeAnimationDuration animations:^{
-        self.transform = CGAffineTransformIdentity;
-    }];
 }
 
 - (void)hide {
-    [UIView animateWithDuration:kBadgeAnimationDuration animations:^{
-        self.transform = CGAffineTransformMakeScale(0.001, 0.001);
-    } completion:^(BOOL finished) {
-        self.hidden = YES;
-    }];
+    self.hidden = YES;
 }
 
 @end
