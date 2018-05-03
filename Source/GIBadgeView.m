@@ -66,7 +66,8 @@ static CGFloat const kBadgeViewDefaultFontSize = 18.0;
     self.font = [UIFont boldSystemFontOfSize:kBadgeViewDefaultFontSize];
     
     self.minimumSize = kBadgeViewMinimumSize;
-    
+    self.showsInlineToSuperview = false;
+
     // Defaults for the corner offset
     self.topOffset = 0.0f;
     self.rightOffset = 0.0f;
@@ -110,7 +111,12 @@ static CGFloat const kBadgeViewDefaultFontSize = 18.0;
 
     // Set our frame and corner radius based on those calculations.
     //
-    self.frame = CGRectMake(CGRectGetWidth(self.superview.frame) - (width / 2.0) - self.rightOffset, -(height / 2.0) + self.topOffset, width, height);
+    if (self.showsInlineToSuperview) {
+        self.frame = CGRectMake(CGRectGetWidth(self.superview.frame) + - (width / 2.0), height / 2.0, width, height);
+    } else {
+        self.frame = CGRectMake(CGRectGetWidth(self.superview.frame) - (width / 2.0) - self.rightOffset, -(height / 2.0) + self.topOffset, width, height);
+    }
+
     self.layer.cornerRadius = height / 2.0;
 
     // Center the badge label.

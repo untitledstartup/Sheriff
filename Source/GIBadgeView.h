@@ -18,6 +18,11 @@
 
 
 /**
+ * This flag will set the frame of the badgeView to be inline to the superview opposed to being at the top right.
+ */
+@property (nonatomic) BOOL showsInlineToSuperview;
+
+/**
  * The color of the badge value text.
  */
 @property (nonatomic, strong) UIColor *textColor;
